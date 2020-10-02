@@ -74,5 +74,5 @@ class Phrase:
             return True
 
 
-new_game = Phrase("This Phrase")
-new_game.display()
+# new_game = Phrase("This Phrase")
+# new_game.display()

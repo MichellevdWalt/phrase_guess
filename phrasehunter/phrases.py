@@ -1,0 +1,10 @@
+phrases = ["break a leg", 
+"when pigs fly", 
+"best of both worlds", 
+"see eye to eye", 
+"piece of cake", 
+"to cut corners", 
+"call it a day", 
+"bite the bullet", 
+"the last straw", 
+"the elephant in the room"]
