@@ -1,9 +1,8 @@
 import random
-import phrase
-import phrases
+from .phrase import Phrase
+# from .phrases import phrases
 
 class Game:
-    
     def __init__(self, phrases, name=None, missed=0, active_phrase=None, guesses=[], current_guess=None):
         self.missed = missed
         self.name = name
@@ -15,7 +14,7 @@ class Game:
     def start(self):
         self.welcome()
         self.get_random_phrase()
-        start_phrase = phrase.Phrase(self.active_phrase)
+        start_phrase = Phrase(self.active_phrase)
         blanks = start_phrase.display(self.name)
         self.current_guess = "".join(blanks)
 
@@ -56,7 +55,6 @@ class Game:
 
 
     def welcome(self):
-        print(self.name)
         if self.name == None:
             print("Welcome to our phrase guessing game!\n")
             name = input("What is your name?  ")
