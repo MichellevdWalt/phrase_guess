@@ -2,8 +2,6 @@
 
 class Phrase:
 
-    current_guess = None
-
     def __init__(self, phrase):
         self.phrase = phrase.lower()
 
@@ -16,34 +14,11 @@ class Phrase:
                 blanks.append("_")
             elif letter == " ":
                 blanks.append(" ")
-        print(" ".join(blanks))
+        print("\n" + " ".join(blanks))
         return blanks
-        
-
-        # while True:
-        #     complete = self.check_complete()
-        #     print(complete)
-        #     if complete:
-        #         print("Congratulations {}!!!! You guessed the phrase".format(name))
-        #         break
-        #     else:
-        #         guess = self.check_letter(name)
-        #         print("Guess:" + guess)
-        #         index = []
-        #         start = 0
-        #         for letter in phrase:
-        #             if letter == guess.lower():
-        #                 if start != 0:
-        #                     blanks[phrase.index(letter, start + 1)] = guess
-        #                     start = phrase.index(letter, start + 1)
-        #                 else:
-        #                     blanks[phrase.index(letter)] = guess
-        #                     start = phrase.index(letter)
-                            
-        #         self.current_guess = " ".join(blanks)
 
 
-    def check_letter(self, name, guess):
+    def check_letter(self, name, guess, lives):
         correct = False
         phrase = self.phrase
 
@@ -52,20 +27,15 @@ class Phrase:
                 correct = True
 
         if correct:
-            print("You guessed right!")     
+            print("\nYou guessed right!\n")     
         else:
-            print("Nope, try again!")
+            print("\nNope, you have {} out of 5 lives remaining".format(5-(lives+1)))
 
         return correct
 
 
-    def check_complete(self, current_guess):
-        complete = False
+    def check_complete(self, current_guess):       
         if "_" in current_guess:
             return False
         else:
             return True
-
-
-# new_game = Phrase("This Phrase")
-# new_game.display()
