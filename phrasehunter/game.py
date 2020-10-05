@@ -72,6 +72,9 @@ class Game:
         while True:
             guess = input("\n{}, please guess a letter from a-z  ".format(self.name))
             if guess.isalpha():
+                if len(guess) > 1:
+                    print("\nOnly one character at a time please.")
+                    continue
                 for letter in self.guesses:
                     if letter.lower() == guess.lower():
                         repeated = True                        
