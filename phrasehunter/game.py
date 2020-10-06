@@ -3,7 +3,7 @@ from .phrase import Phrase
 # from .phrases import phrases
 
 class Game:
-    def __init__(self, phrases, score, games, name=None, missed=0, active_phrase=None, guesses=[], current_guess=None):
+    def __init__(self, phrases, score=0, games=0, name=None, missed=0, active_phrase=None, guesses=[], current_guess=None):
         self.phrases = phrases
         self.score = score
         self.games = games
@@ -41,16 +41,20 @@ class Game:
                     break
                 else:
                     print(self.current_guess + "\n")
+                    print("You have {} out of 5 lives remaining\n".format(5-(self.missed)))
+
             else:
                 self.missed += 1
                 if self.missed == 5:
                     again = self.game_over(False)
                     break
+                self.current_guess = " ".join(blanks)
+                print(self.current_guess + "\n")
 
-        if again[0]:
-            return True, self.name, again[1]
-        elif again[0] == False:
-            return False, self.name, again[1]
+        if again:
+            return True, self.name, self.score, self.games
+        elif again == False:
+            return False, self.name, self.score, self.games
 
 
     def get_random_phrase(self):
@@ -91,7 +95,9 @@ class Game:
 
 
     def game_over(self, win):
+        self.games +=1
         if win:
+            self.score += 1
             print("Congratulations {}!!!! You guessed the phrase!!\n".format(self.name))
             print('The correct phrase was: "' + self.active_phrase + '"\n')
         else:
@@ -99,10 +105,10 @@ class Game:
         while True:
             again = input("Would you like to play again? y/n  ")
             if again.lower() == "y":
-                return True, win
+                return True
                 break
             elif again.lower() == "n":
-                return False, win
+                return False
                 break
             else:
                 print("\nPlease type only a 'y' or 'n'\n")

@@ -28,7 +28,7 @@ class Phrase:
         if correct:
             print("\nYou guessed right!\n")     
         else:
-            print("\nNope, you have {} out of 5 lives remaining".format(5-(lives+1)))
+            print("\nNope, you have {} out of 5 lives remaining\n".format(5-(lives+1)))
 
         return correct
 
