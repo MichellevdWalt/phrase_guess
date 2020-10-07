@@ -4,6 +4,8 @@ class Phrase:
     def __init__(self, phrase):
         self.phrase = phrase.lower()
 
+    def __str__(self):
+        return "{}".format(self.phrase)
 
     def display(self, name):
         phrase = list(self.phrase)

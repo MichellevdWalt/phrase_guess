@@ -1,8 +1,9 @@
 from phrasehunter.game import Game
-from phrasehunter.phrases import phrases
+from phrasehunter.phrases import phrase_objects
 
 if __name__ == "__main__":
     name = None
+    phrases = phrase_objects()
 
     while True:
         if name == None:

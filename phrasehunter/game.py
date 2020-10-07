@@ -17,7 +17,7 @@ class Game:
     def start(self):
         self.welcome()
         self.get_random_phrase()
-        start_phrase = Phrase(self.active_phrase)
+        start_phrase = self.active_phrase
         blanks = start_phrase.display(self.name)
         self.current_guess = "".join(blanks)
 
@@ -29,7 +29,7 @@ class Game:
             if correct:
                 index = []
                 number = -1
-                active_phrase = self.active_phrase
+                active_phrase = self.active_phrase.__str__()
                 for letter in active_phrase:
                     number += 1
                     if letter == current_guessed_letter.lower():
@@ -58,7 +58,7 @@ class Game:
 
 
     def get_random_phrase(self):
-        number = random. randint(0,len(self.phrases)-1)
+        number = random.randint(0,len(self.phrases)-1)
         self.active_phrase = self.phrases[number]
 
 
@@ -99,7 +99,7 @@ class Game:
         if win:
             self.score += 1
             print("Congratulations {}!!!! You guessed the phrase!!\n".format(self.name))
-            print('The correct phrase was: "' + self.active_phrase + '"\n')
+            print('The correct phrase was: "' + self.active_phrase.__str__() + '"\n')
         else:
             print("Better luck next time!!\n")
         while True:
