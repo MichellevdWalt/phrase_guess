@@ -1,6 +1,5 @@
 import random
 from .phrase import Phrase
-# from .phrases import phrases
 
 class Game:
     def __init__(self, phrases, score=0, games=0, name=None, missed=0, active_phrase=None, guesses=[], current_guess=None):
@@ -92,6 +91,21 @@ class Game:
                 print("\nThat doesn't seem to be a valid letter from a-z. Please try again.\n\nDon't worry, no life was taken")
                 continue
             
+    def again(self):
+        while True:
+            again = input("Would you like to play again? y/n  ")
+            if again.lower() == "y":
+                self.missed = 0
+                self.guesses = []
+                self.start()
+                break
+            elif again.lower() == "n":
+                print("\nThanks for playing {}".format(self.name))
+                print("\nYour final score was {} out of {}".format(self.score, self.games))
+                break
+            else:
+                print("\nPlease type only a 'y' or 'n'\n")
+                continue
 
 
     def game_over(self, win):
@@ -102,14 +116,15 @@ class Game:
             print('The correct phrase was: "' + self.active_phrase.__str__() + '"\n')
         else:
             print("Better luck next time!!\n")
-        while True:
-            again = input("Would you like to play again? y/n  ")
-            if again.lower() == "y":
-                return True
-                break
-            elif again.lower() == "n":
-                return False
-                break
-            else:
-                print("\nPlease type only a 'y' or 'n'\n")
-                continue
+        self.again()
+        # while True:
+        #     again = input("Would you like to play again? y/n  ")
+        #     if again.lower() == "y":
+        #         return True
+        #         break
+        #     elif again.lower() == "n":
+        #         return False
+        #         break
+        #     else:
+        #         print("\nPlease type only a 'y' or 'n'\n")
+        #         continue
