@@ -117,14 +117,3 @@ class Game:
         else:
             print("Better luck next time!!\n")
         self.again()
-        # while True:
-        #     again = input("Would you like to play again? y/n  ")
-        #     if again.lower() == "y":
-        #         return True
-        #         break
-        #     elif again.lower() == "n":
-        #         return False
-        #         break
-        #     else:
-        #         print("\nPlease type only a 'y' or 'n'\n")
-        #         continue
